@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Lists testing</title>
+    <script src="qunit.js"></script>
+    <script src="../scripts/jquery-1.10.1.min.js"></script>
+    <script src="../scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../scripts/object-create-extend.js"></script>
+    <script src="../scripts/local-storage-extensions.js"></script>
+
+    <script src="../scripts/taffy-min.js"></script>
+    <script src="../scripts/prototype.js"></script>
+
+    <script src="../scripts/organizer.js"></script>
+    <script src="../scripts/organizer-html-patterns.js"></script>
+    <script src="../scripts/organizer-storage.js"></script>
+    <script src="../scripts/organizer-entries.js"></script>
+    <script src="../scripts/organizer-list.js"></script>
+
+    <script src="extentions.js"></script>
+
+    <link rel="stylesheet" href="qunit.css" />
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="testingElement">
+        
+    </div>
+    <script>
+        test("OgranizerList - Creation", function () {
+            var list = new Organizer.EntryList("TITLE");
+
+            equal(list.title, "TITLE");
+            equal(list.data.length, 0);
+        });
+
+        test("OgranizerList - AddingEntry", function () {
+            var entry = Organizer.Storage.TaffyDB.getEntryByIDField(2);
+            var list = new Organizer.EntryList("TITLE");
+
+            list.addEntry(entry);
+
+            equal(list.data.length, 1);
+            equal(areSameEntries(entry, list.data[0]), true);
+        });
+
+        test("OgranizerList - AddingEntry - null", function () {
+            var entry = null;
+            var list = new Organizer.EntryList("TITLE");
+
+            list.addEntry(entry);
+
+            equal(list.data.length, 1);
+            equal(areSameEntries(entry, list.data[0]), true);
+        });
+
+        test("OgranizerList - AddingEntry - multiple", function () {
+            var entry = Organizer.Storage.TaffyDB.getEntryByIDField(2);
+            var list = new Organizer.EntryList("TITLE");
+
+            list.addEntry(entry);
+            list.addEntry(entry);
+            list.addEntry(entry);
+
+            equal(list.data.length, 3);
+            equal(areSameEntries(entry, list.data[0]), true);
+            equal(areSameEntries(entry, list.data[1]), true);
+            equal(areSameEntries(entry, list.data[2]), true);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Entry testing</title>
+    <script src="qunit.js"></script>
+    <script src="../scripts/jquery-1.10.1.min.js"></script>
+    <script src="../scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../scripts/object-create-extend.js"></script>
+    <script src="../scripts/local-storage-extensions.js"></script>
+
+    <script src="../scripts/taffy-min.js"></script>
+    <script src="../scripts/prototype.js"></script>
+
+    <script src="../scripts/organizer.js"></script>
+    <script src="../scripts/organizer-html-patterns.js"></script>
+    <script src="../scripts/organizer-storage.js"></script>
+    <script src="../scripts/organizer-entries.js"></script>
+    <script src="../scripts/organizer-list.js"></script>
+
+    <script src="extentions.js"></script>
+    <link rel="stylesheet" href="qunit.css" />
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="testingElement">
+        
+    </div>
+    <script>
+        test("OgranizerEntry - Task - Creation", function () {
+            var expectedTitle = "testing ";
+            var expectedDescription = "adescriptive";
+            var expectedPriority = Organizer.Entries.Priority.High
+            var expectedEndDate = "05.05.05";
+
+            var task = new Organizer.Entries.Task(
+                expectedTitle, expectedDescription,
+                expectedPriority, expectedEndDate);
+
+            var actualTitle = task.title;
+            var actualDescription = task.description;
+            var actualPriority = task.priority;
+            var actualEndDate = task.endDate;
+
+            equal(actualTitle, expectedTitle);
+            equal(actualDescription, expectedDescription);
+            equal(actualPriority, expectedPriority);
+            equal(actualEndDate, expectedEndDate);
+        });
+
+        test("OgranizerEntry - Event - Creation", function () {
+            var expectedTitle = "testing ";
+            var expectedDescription = "adescriptive";
+            var expectedPriority = Organizer.Entries.Priority.Normal;
+            var expectedEndDate = "05.05.05";
+            var expectedStartDate = "04.04.04";
+            var expectedLocation = "Town";
+
+            var event = new Organizer.Entries.Event(
+                expectedTitle, expectedDescription, expectedPriority,
+                expectedStartDate, expectedEndDate, expectedLocation
+                );
+
+            var actualTitle = event.title;
+            var actualDescription = event.description;
+            var actualPriority = event.priority;
+            var actualStartDate = event.startDate;
+            var actualEndDate = event.endDate;
+            var actualLocation = event.location;
+
+            equal(actualTitle, expectedTitle);
+            equal(actualDescription, expectedDescription);
+            equal(actualPriority, expectedPriority);
+            equal(actualEndDate, expectedEndDate);
+            equal(actualLocation, expectedLocation);
+            equal(actualStartDate, expectedStartDate);
+        });
+
+        test("OgranizerEntry - Anniversary - Creation", function () {
+            var expectedTitle = "testing ";
+            var expectedDescription = "adescriptive";
+            var expectedPriority = Organizer.Entries.Priority.Low;
+            var expectedDate = "05.05.05";
+
+            var anniversary = new Organizer.Entries.Anniversary(
+                expectedTitle, expectedDescription,
+                expectedPriority, expectedDate
+                );
+
+            var actualTitle = anniversary.title;
+            var actualDescription = anniversary.description;
+            var actualPriority = anniversary.priority;
+            var actualDate = anniversary.date;
+
+            equal(actualTitle, expectedTitle);
+            equal(actualDescription, expectedDescription);
+            equal(actualPriority, expectedPriority);
+            equal(actualDate, expectedDate);
+        });
+    </script>
+</body>
+</html>

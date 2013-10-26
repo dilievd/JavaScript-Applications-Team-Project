@@ -1,0 +1,266 @@
+﻿
+
+/*******************
+    Resets 
+*******************/
+
+body, button {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    min-height: 100%;
+    height: 100%;
+}
+
+/*******************
+    Organizer
+*******************/
+
+#organizer {
+    font-size: 15px;
+    font-family: Verdana, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    min-height: 600px;
+    height: 100%;
+    position: relative;
+}
+
+#organizer button {
+    color: #808080;
+    font-size: 16px;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+    font-weight: bold;
+    height: 40px;
+    background: #FFF;
+    border: 1px solid #CCC;
+}
+
+#organizer button:hover {
+    border: 1px solid #808080;
+    cursor: pointer;
+}
+
+#organizer button.active {
+    box-shadow: 0 0 3px #170A2B;
+    color: #FFF;
+    background: #363636;
+    border-color: #000;
+}
+
+/*******************
+    Organizer Main Sidebar
+*******************/
+
+#organizer .main-sidebar {
+    background: #eee;
+    width: 300px;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    float: left;
+}
+
+#organizer .main-sidebar button {
+    width: 100%;
+}
+
+#organizer .main-sidebar .top {
+    height: 45%;
+    background: #808080;
+}
+
+#organizer .main-sidebar .top h2 {
+    color: #fff;
+    text-align: center;
+}
+
+#organizer .main-sidebar .top ul {
+
+}
+
+#organizer .main-sidebar .middle {
+    height:40%;
+    overflow: auto;
+}
+
+#organizer .main-sidebar .bottom {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#organizer .main-sidebar .bottom button {
+    width: 70%;
+}
+
+/*******************
+    Organizer Main Content
+*******************/
+
+#organizer .main-content {
+    overflow: auto;
+    position: absolute;
+    left: 300px;
+    padding: 10px;
+    height: 96%;
+    width: 650px;
+} 
+
+#organizer .main-content .top header {
+    color: #fff;
+    background: #808080;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: inset 0 0 6px #FFF;
+    border: 1px solid;
+} 
+
+#organizer .main-content .top {
+
+} 
+
+#organizer .main-content .top .inner {
+    padding: 10px;
+} 
+
+
+/*******************
+    Main Content - Entry List
+*******************/
+
+#organizer .main-content .entry-list {
+    height: 80%;
+    font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+} 
+
+#organizer .main-content .entry-list a {
+    color: #808080;
+    font-weight: bold;
+} 
+#organizer .main-content .entry-list p {
+    padding: 5px;
+    margin: 0px 5px;
+} 
+#organizer .main-content .entry-list p.active {
+    background: #eee;
+} 
+#organizer .main-content .entry-list a:hover {
+    color: #4f4f4f;
+} 
+#organizer .main-content .entry-list .short-description {
+    padding: 3px 5px;
+    margin: 10px;
+    border: 1px solid #D5D5D5;
+} 
+
+#organizer .main-content .entry-list .date,
+#organizer .main-content .entry-list .end-date,
+#organizer .main-content .entry-list .start-date {
+    font-weight: bold;
+    color: #363636;
+}
+
+/*******************
+    Single Entry Box
+*******************/
+
+#organizer .single-entry {
+    position: absolute;
+    width: 250px;
+    min-height: 200px;
+    left: 965px;
+    border-radius: 5px;
+    border: 1px solid #ADADAD;
+    margin: 12px 10px;
+    padding: 10px;
+    max-height: 80%;
+    overflow: auto;
+    box-shadow: inset 0 0 3px #575757;
+}
+
+#organizer .single-entry h3 {
+    margin: 10px;
+    margin-top: 5px;
+    color: #383838;
+}
+#organizer .single-entry p {
+    margin: 5px 0;
+}
+#organizer .single-entry em {
+    font-weight: bold;
+    color: #4d4d4d;
+}
+#organizer .single-entry .description .inner {
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #B1B1B1;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+#organizer .single-entry .description button.edit,
+#organizer .single-entry .description button.save {
+    float: right;
+    padding: 0 5px;
+}
+
+#organizer .single-entry .date em,
+#organizer .single-entry .start-date em,
+#organizer .single-entry .end-date em {
+    margin-left: 10px;
+}
+#organizer .single-entry .date em,
+#organizer .single-entry .start-date em,
+#organizer .single-entry .end-date em,
+#organizer .single-entry .date input,
+#organizer .single-entry .start-date input,
+#organizer .single-entry .end-date input {
+    width: 110px;
+    display: inline-block;
+} 
+#organizer .single-entry .location input {
+    width: 95%;
+    display: block;
+    margin-top: 10px;
+}
+    
+#organizer .single-entry .description button.inactive {
+    color: #CCC;
+}
+#organizer .single-entry .description button.inactive:hover {
+    border-color: #ccc;
+}
+
+/*******************
+    Generic classes  
+*******************/
+
+.widget-box {
+    overflow: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.no-ulstyle {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.margin-20 {
+    margin-top: 20px;
+}
+
+.widget-box h2 {
+    margin: 10px 5px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Simplest Organizer - Grapefruit</title>
+    <link rel="stylesheet" href="css/organizer.css" />
+    <!--    <script src="scripts/object-create-extend.js"></script>
+    <script src="scripts/local-storage-extensions.js"></script>-->
+</head>
+<body>
+    <div id="organizer">
+        <aside class="main-sidebar">
+            <section class="top widget-box">
+                <h2>View Entries: </h2>
+                <ul class="no-ulstyle">
+                    <li>
+                        <button>Daily</button></li>
+                    <li>
+                        <button>Weekly</button></li>
+                    <li>
+                        <button class="active">Monthly</button></li>
+                </ul>
+                <ul class="no-ulstyle margin-20">
+                    <li>
+                        <button>Add Entry</button></li>
+                    <li>
+                        <button>Add Entry List</button></li>
+                </ul>
+            </section>
+            <section class="middle widget-box">
+                <ul class="no-ulstyle">
+                    <li>
+                        <button class="active">All Lists</button></li>
+                    <li>
+                        <button>Default List</button></li>
+                    <li>
+                        <button>List one</button></li>
+                    <li>
+                        <button>List other</button></li>
+                    <li>
+                        <button>List other2</button></li>
+                    <li>
+                        <button>List other3</button></li>
+                    <li>
+                        <button>List other4</button></li>
+                    <li>
+                        <button>List other5</button></li>
+                    <li>
+                        <button>List other6</button></li>
+                    <li>
+                        <button>List other7</button></li>
+                    <li>
+                        <button>List other8</button></li>
+                </ul>
+            </section>
+        </aside>
+
+        <section class="main-content">
+
+            <div class="top">
+                <header>
+                    <div class="inner">Monthly view: viewing all entries with a start or end date in the current month.</div>
+                </header>
+            </div>
+            <div class="entry-list widget-box">
+                <ul>
+                    <li data-id="1">
+                        <p><span class="entry-type">Task</span>: <a href="#">task1</a> / <em class="end-date">to 25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="2">
+                        <p><span class="entry-type">Event</span>: <a href="#">event1</a> / <em class="start-date">25.05.2013</em> -  <em class="end-date">25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="3">
+                        <span class="entry-type">Event</span>: <a href="#">event2</a> / <em class="start-date">25.05.2013</em> -  <em class="end-date">25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="4">
+                        <p class="active"><span class="entry-type">Anniversary</span>: <a href="#">Emmo's birthday</a> / <em class="start-date">23.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    
+                    <li data-id="1">
+                        <p><span class="entry-type">Task</span>: <a href="#">task1</a> / <em class="end-date">to 25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="2">
+                        <p><span class="entry-type">Event</span>: <a href="#">event1</a> / <em class="start-date">25.05.2013</em> -  <em class="end-date">25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="3">
+                        <span class="entry-type">Event</span>: <a href="#">event2</a> / <em class="start-date">25.05.2013</em> -  <em class="end-date">25.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                    <li data-id="4">
+                        <p><span class="entry-type">Anniversary</span>: <a href="#">Emmo's birthday</a> / <em class="start-date">23.06.2013</em></p>
+                        <p class="short-description">This is a short description of an entry.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <aside class="single-entry">
+            <h3>Anniversary Title</h3>
+            <p class="entry-type">Type: <em>Anniversary</em></p>
+            <p class="date"><em>Date:</em><input type="text" placeholder="none" /></p>
+            <div class="description widget-box">
+                Full Description:
+                        <div class="inner">This is the first paragrapch of a fill description of an event. A second sentence, short one. This is the third paragrapch of a full description of an entry.This is the first paragrapch of a fill description of an event. A second sentence, short one. This is the third paragrapch of a full description of an entry.A second sentence, short one. This is the third paragrapch of a full description of an entry.This is the first paragrapch of a fill description of an event. A second sentence, short one. This is the third paragrapch of a full description of an entry.</div>
+                <button class="edit">Edit</button>
+                <button class="save inactive">Save</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!--    <script src="scripts/organizer.js"></script>
+    <script src="scripts/organizer-entries.js"></script>
+    <script src="scripts/organizer-list.js"></script>
+    <script src="scripts/organizer-storage.js"></script>-->
+    <script>
+
+        //var organizer = Organizer.getInstance();
+
+        //var list = Object.create(Organizer.List);
+        //list.init();
+
+    </script>
+</body>
+</html>

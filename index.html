@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Simplest Organizer - Grapefruit</title>
+    <link rel="stylesheet" href="css/organizer.css" />
+    <link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.3.custom.min.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="scripts/prototype.js"></script>
+    <script src="scripts/jquery-1.10.1.min.js"></script>
+    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="scripts/local-storage-extensions.js"></script>
+    <script src="scripts/taffy-min.js"></script>
+    <script type="text/javascript">
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+</head>
+<body>
+    <div id="organizer">
+        <aside class="main-sidebar">
+            <section class="top widget-box">
+                <h2>View Entries: </h2>
+                <ul class="no-ulstyle">
+                    <li>
+                        <button class="active">All</button></li>
+                    <li>
+                        <button class="daily">Daily</button></li>
+                    <li>
+                        <button class="weekly">Weekly</button></li>
+                    <li>
+                        <button class="monthly">Monthly</button></li>
+                </ul>
+                <ul class="no-ulstyle margin-20">
+                    <li>
+                        <button class="add-entry">Add Entry</button></li>
+                    <li>
+                        <button class="add-list">Add Entry List</button></li>
+                </ul>
+            </section>
+            <section class="middle widget-box">
+                <ul class="no-ulstyle">
+                    <li>
+                        <button class="all-lists active">All Lists</button>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <section class="main-content">
+
+            <div class="top">
+                <header>
+                    <div style="display: none;" class="inner">Monthly view: viewing all entries with a start or end date in the current month.</div>
+                </header>
+            </div>
+            <ul id="list-container" class="entry-list widget-box">
+            </ul>
+        </section>
+    </div>
+
+    <script src="scripts/organizer.js"></script>
+    <script src="scripts/organizer-html-patterns.js"></script>
+    <script src="scripts/organizer-entries.js"></script>
+    <script src="scripts/organizer-list.js"></script>
+    <script src="scripts/organizer-storage.js"></script>
+    <script>
+        var organizer = Organizer.getInstance();
+    </script> 
+</body> 
+</html>

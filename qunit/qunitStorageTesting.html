@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Storage testing</title>
+    <script src="qunit.js"></script>
+    <script src="../scripts/jquery-1.10.1.min.js"></script>
+    <script src="../scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../scripts/object-create-extend.js"></script>
+    <script src="../scripts/local-storage-extensions.js"></script>
+
+    <script src="../scripts/taffy-min.js"></script>
+    <script src="../scripts/prototype.js"></script>
+
+    <script src="../scripts/organizer.js"></script>
+    <script src="../scripts/organizer-html-patterns.js"></script>
+    <script src="../scripts/organizer-storage.js"></script>
+    <script src="../scripts/organizer-entries.js"></script>
+    <script src="../scripts/organizer-list.js"></script>
+
+    <script src="extentions.js"></script>
+
+    <link rel="stylesheet" href="qunit.css" />
+</head>
+<body>
+    <div id="qunit"></div>
+    <script>
+
+        var emptyRecord = new Organizer.Entries.Task("", "", "", "")
+        var record = new Organizer.Entries.Task(
+                "TITLE", "DESCRIPTION",
+                Organizer.Entries.Priority.High, "05");
+        var record2 = new Organizer.Entries.Task(
+                "TITLE1", "DESCRIPTION2",
+                Organizer.Entries.Priority.High, "053");
+        var todayEntry = new Organizer.Entries.Task(
+            "TITLE", "DESCP",
+            Organizer.Entries.Priority.High, Date());
+        var todayEntry2 = new Organizer.Entries.Task(
+           "TITLE2", "DESCP2",
+           Organizer.Entries.Priority.High, Date());
+
+        var DB = Organizer.Storage.TaffyDB;
+
+        //Functions that create the collection
+        test("Taffy DB - Create one record", function () {
+            DB.insertNewEntry(9, record);
+
+            equal(areSameEntries(DB.getEntryByIDField(9), record), true);
+            equal(DB.getAllEntries().length, 1);
+        });
+
+        test("Taffy DB - Create two records", function () {
+            DB.insertNewEntry(1, record);
+            DB.insertNewEntry(2, record2);
+
+            equal(areSameEntries(DB.getEntryByIDField(1), record), true);
+            equal(areSameEntries(DB.getEntryByIDField(2), record2), true);
+            equal(DB.getAllEntries().length, 2);
+        });
+
+        test("Taffy DB - Create two same records", function () {
+            DB.insertNewEntry(1, record);
+            DB.insertNewEntry(2, record);
+
+            equal(areSameEntries(DB.getEntryByIDField(1), record), true);
+            equal(areSameEntries(DB.getEntryByIDField(2), record), true);
+            equal(DB.getAllEntries().length, 2);
+        });
+
+        test("Taffy DB - Create null recod", function () {
+            DB.insertNewEntry(1, null);
+
+            equal(DB.getEntryByIDField(1), undefined);
+            equal(DB.getEntryByIDField(1), null);
+            equal(DB.getAllEntries().length, 1);
+        });
+
+        test("Taffy DB - Create empty record", function () {
+            DB.insertNewEntry(1, emptyRecord);
+
+            equal(areSameEntries(DB.getEntryByIDField(1), emptyRecord), true);
+            equal(DB.getAllEntries().length, 1);
+        });
+
+        test("Taffy DB - Overwrite a record", function () {
+            DB.insertNewEntry(9, record);
+
+            equal(areSameEntries(DB.getEntryByIDField(9), record), true);
+            DB.insertNewEntry(9, record);
+            equal(areSameEntries(DB.getEntryByIDField(9), record), true);
+
+            equal(DB.getAllEntries().length, 1);
+        });
+
+        test("Taffy DB - Add today entry", function () {
+            DB.insertNewEntry(9, todayEntry);
+
+            equal(areSameEntries(DB.getEntryByIDField(9), todayEntry), true);
+            equal(DB.getEntriesTillEndOfDay().length, 1);
+        });
+
+        test("Taffy DB - Add two today entries", function () {
+            DB.insertNewEntry(9, todayEntry);
+            DB.insertNewEntry(8, todayEntry2);
+
+            equal(areSameEntries(DB.getEntryByIDField(9), todayEntry), true);
+            equal(areSameEntries(DB.getEntryByIDField(8), todayEntry2), true);
+            equal(DB.getEntriesTillEndOfDay().length, 2);
+        });
+
+        test("Taffy DB - No today entries", function () {
+            DB.insertNewEntry(9, record);
+            equal(DB.getEntriesTillEndOfDay().length, 0);
+        });
+
+        test("Taffy DB - Month Entries", function () {
+            equal(0, 1, "NOT IMPLEMENTED TEST");
+        });
+
+        //Functions that work with the collection
+        test("Taffy DB - Get List 'Default List'", function () {
+            var entries = DB.getListEntries("Default List");
+
+            equal(entries.length, 3);
+        });
+
+        test("Taffy DB - Get List 'List 2'", function () {
+            var entries = DB.getListEntries("Default List");
+
+            equal(entries.length, 3);
+        });
+
+        test("Taffy DB - Get List that Does not Exist", function () {
+            var expected = 0;
+            var actual = DB.getListEntries("Random").length;
+            
+            equal(actual, expected);
+            //Check if the the list is actually the list;
+        });
+
+        test("Taffy DB - Get Data", function () {
+            var data = DB.getAllEntries();
+            var expectedCount = 6;
+
+            var actual = data.length;
+            equal(actual, expectedCount);
+        });
+
+        test("Taffy DB - Remove one", function () {
+            var expected = "A";
+            var actual = "B";
+            
+            equal(actual, expected);
+            //Check if the data is updated
+            //check if the data removed is what we wanted to remove
+            //Check count of elements in the data
+        });
+
+        test("Taffy DB - Remove two same", function () {
+            var expected = "A";
+            var actual = "B";
+            
+            equal(actual, expected);
+            //Check if the data is updated
+            //check if the data removed is what we wanted to remove
+            //Check count of elements in the data
+        });
+
+        test("Taffy DB - Remove none", function () {
+            var expected = "A";
+            var actual = "B";
+            
+            equal(actual, expected);
+            //Check if the data is updated
+            //check if the data removed is what we wanted to remove
+            //Check count of elements in the data
+        });
+
+        test("Taffy DB - Remove not existing", function () {
+            var expected = "A";
+            var actual = "B";
+            
+            equal(actual, expected);
+            //Check if the data is updated
+            //check if the data removed is what we wanted to remove
+            //Check count of elements in the data
+        });
+
+        test("Taffy DB - Get by Field", function () {
+            var requestedField = "title";
+
+            var expectedID = 1;
+            var expectedField = "Throw the garbage.";
+
+            var actualField = DB.getEntryField(expectedID, requestedField);
+            equal(expectedField, actualField);
+        });
+
+        test("Taffy DB - Get by not Existing field", function () {
+            var requestedField = "throw the cheese";
+
+            var expectedID = 1;
+
+            var actualField = DB.getEntryField(expectedID, requestedField);
+            equal(undefined, actualField);
+        });
+    </script>
+</body>
+</html>

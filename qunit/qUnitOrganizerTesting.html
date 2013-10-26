@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Organizer testing</title>
+    <script src="qunit.js"></script>
+    <script src="../scripts/jquery-1.10.1.min.js"></script>
+    <script src="../scripts/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../scripts/object-create-extend.js"></script>
+    <script src="../scripts/local-storage-extensions.js"></script>
+
+    <script src="../scripts/taffy-min.js"></script>
+    <script src="../scripts/prototype.js"></script>
+
+    <script src="../scripts/organizer.js"></script>
+    <script src="../scripts/organizer-html-patterns.js"></script>
+    <script src="../scripts/organizer-storage.js"></script>
+    <script src="../scripts/organizer-entries.js"></script>
+    <script src="../scripts/organizer-list.js"></script>
+
+    <script src="extentions.js"></script>
+
+    <script type="text/javascript">
+        jQuery.noConflict();
+        var $j = jQuery;
+    </script>
+
+    <link rel="stylesheet" href="qunit.css" />
+</head>
+<body>
+    <div id="qunit"></div>
+    <script>
+        var organizer = Organizer.getInstance();
+        test("Organizer - Creation", function () {
+            notEqual(organizer, null);
+        });
+
+        test("Organizer - EditingEntry", function () {
+            var newEntry = new Organizer.Entries.Task("Title", "Descr", "Prior", "Date");
+            organizer.setEditedEntry(3, newEntry, "Task");
+            
+            equal(areSameEntries(newEntry, organizer.getEditedEntry()), true);
+            equal(organizer.getEditedEntryID(), "3");
+            equal(organizer.getEditedEntryType(), "Task");
+        });
+
+        test("Organizer - EditingEntry - nulls", function () {
+            organizer.setEditedEntry(null, null, null);
+
+            equal(areSameEntries(null, organizer.getEditedEntry()), true);
+            equal(organizer.getEditedEntryID(), null);
+            equal(organizer.getEditedEntryType(), null);
+        });
+
+        test("Organizer - EditingEntry - empties", function () {
+            organizer.setEditedEntry("", "", "");
+
+            equal(areSameEntries("", organizer.getEditedEntry()), true);
+            equal(organizer.getEditedEntryID(), "");
+            equal(organizer.getEditedEntryType(), "");
+        });
+    </script>
+</body>
+</html>

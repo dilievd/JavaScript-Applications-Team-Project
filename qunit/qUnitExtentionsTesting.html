@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Extentions testing</title>
+    <script src="qunit.js"></script>
+    <script src="../scripts/local-storage-extensions.js"></script>
+    <script src="../scripts/object-create-extend.js"></script>
+    <link rel="stylesheet" href="qunit.css" />
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="testingElement">
+        
+    </div>
+    <script>
+        var testClass = {
+            test: function(){
+                return true;
+            }
+        }
+
+        test("Object.Create", function () {
+            var expected = true;
+            var actual = Object.create(testClass).test();
+            equal(actual, expected);
+        });
+
+
+        test("Storage.setObject", function () {
+            localStorage.setObject("test", "true");
+            var expected = true.toString();
+            var actual = localStorage.getObject("test");
+            equal(actual, expected);
+        });
+
+        test("Storage.getObject", function () {
+            localStorage.setObject("test", "true");
+            var expected = true.toString();
+            var actual = localStorage.getObject("test");
+            equal(actual, expected);
+        });
+    </script>
+</body>
+</html>

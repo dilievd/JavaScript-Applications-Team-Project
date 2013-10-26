@@ -1,0 +1,129 @@
+
+
+Module1 (Organiser):
+	// the whole thing - a singleton keeping all the other objects that you see downwards
+	
+	Module2 (main organiser logic): 
+
+		- OrganiserEntry: 
+			// abstract class
+			- title;
+			- description // optional description for an entry
+			- priority;
+			
+			
+				// DERIVED CLASSES:
+				- Task
+					- +end date;
+						
+						
+				- Event: 
+					- +start date;
+					- +end date;
+					- +location;
+				
+				-Anniversary
+					- +date
+					
+		- Priority(Class):
+			// A field for some of the Entry classes
+			- title;	// 
+			- weight;	// as a number: the importance of the task
+			- color (red dark red)	// for visualisation purposes; example: dark red for critically important entries;
+			
+		- EntryList;
+		
+		//- Archive: 
+			// list of Entry objects for a Given... say... month;
+		
+		
+		// if time permits: 
+		- User:
+			- username;
+			- avatar? (optional)
+		(individual event/task listing for each user)
+		
+		
+	Module3 // local storage
+	
+		OrginizerLocalStorage:
+			- getData;
+			- setData(newData);
+	
+	
+	
+							// OPTIONAL FOR NOW (goes ideas, if time permits)
+							Module3: 
+								- UserHelper (Singleton); // using the Observer pattern;
+									// A textbox with help, appearing on certain occasions (events);
+									// Example: User enters the texbox for adding the description of an entry
+									// and the text: 
+			
+			
+-----------
+
+
+// the whole organizer object, structure example:
+{
+	'lists': 
+	[
+		// list object:
+		{ 
+			'name': 'DefaultList',
+			'entries': 
+			[
+				
+			]
+		},
+		// list object:
+		{ 
+			'name': 'List2',
+			'entries': 
+			[
+				//...
+			]
+		},
+	]
+
+}
+
+
+// retrieving the organizer data
+var organizerData = organizerLocalStorage.getData();
+
+// saving the organizer data
+organizerLocalStorage.setData(organizerData);
+
+-----------
+	Organiser Functionality: 
+	
+		- 
+
+-----------
+Project Folder Tree: 
+
+root: 
+	- css;
+	- js;
+		- // different parts of the application can be in different files
+	
+	index.html
+
+-----------
+General Requirements:
+
+•	Use jQuery : For some animations, easy dom selection, JQuery AJAX for the final Facebook/Twitter sharing
+•	Unit testing for all of the components: YET to investigate;
+•	Implement a UI for your application : own UI logic + some JQueryUI elements...;
+•	Use some kind of data storage : localStorage for saving data for the entries;
+•	At least one third-party API to share something from your application : YET to decide what exactly to shader using JQuery Ajax; 
+•	The application must work in Google Chrome 26,  Mozilla Firefox 21, Internet Explorer 9, Internet Explorer 10, Opera 12: it will;
+
+
+--------------------------
+
+Ideas:
+	- export/import to text files;
+	- background change;
+	- google maps 'location' search;
+	
